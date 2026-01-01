@@ -1,0 +1,142 @@
+# Content API Contract: Physical AI & Humanoid Robotics Book
+
+## Overview
+This document defines the API contract for potential content-related functionality in the Physical AI & Humanoid Robotics book project. This would support features like content search, user progress tracking, or interactive exercises.
+
+## Base URL
+`https://api.physica-ai-book.com/v1`
+
+## Endpoints
+
+### 1. Search Content
+- **Endpoint**: `GET /search`
+- **Description**: Search for specific content within the book
+- **Parameters**:
+  - `q` (string, required): Search query
+  - `limit` (integer, optional): Number of results to return (default: 10, max: 50)
+  - `offset` (integer, optional): Number of results to skip for pagination (default: 0)
+- **Response**:
+  ```json
+  {
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "content_type": "chapter|lesson|project|example",
+        "url": "string",
+        "snippet": "string",
+        "relevance_score": "number"
+      }
+    ],
+    "total_count": "integer",
+    "has_more": "boolean"
+  }
+  ```
+- **Authentication**: None required (public content)
+
+### 2. Get Chapter Details
+- **Endpoint**: `GET /chapters/{chapterId}`
+- **Description**: Retrieve details about a specific chapter
+- **Path Parameters**:
+  - `chapterId` (string, required): Unique identifier of the chapter
+- **Response**:
+  ```json
+  {
+    "id": "string",
+    "title": "string",
+    "description": "string",
+    "order": "integer",
+    "prerequisites": ["string"],
+    "lessons": [
+      {
+        "id": "string",
+        "title": "string",
+        "order": "integer",
+        "url": "string"
+      }
+    ],
+    "projects": [
+      {
+        "id": "string",
+        "title": "string",
+        "url": "string"
+      }
+    ],
+    "tags": ["string"]
+  }
+  ```
+- **Authentication**: None required (public content)
+
+### 3. Get Lesson Details
+- **Endpoint**: `GET /lessons/{lessonId}`
+- **Description**: Retrieve details about a specific lesson
+- **Path Parameters**:
+  - `lessonId` (string, required): Unique identifier of the lesson
+- **Response**:
+  ```json
+  {
+    "id": "string",
+    "title": "string",
+    "description": "string",
+    "chapterId": "string",
+    "order": "integer",
+    "content": "string",
+    "prerequisites": ["string"],
+    "learning_objectives": ["string"],
+    "exercises": [
+      {
+        "id": "string",
+        "title": "string",
+        "type": "practice_problem|quiz|coding_challenge|reflection",
+        "difficulty": "beginner|intermediate|advanced"
+      }
+    ],
+    "examples": [
+      {
+        "id": "string",
+        "title": "string",
+        "language": "string"
+      }
+    ],
+    "tags": ["string"]
+  }
+  ```
+- **Authentication**: None required (public content)
+
+### 4. Track User Progress (Future Feature)
+- **Endpoint**: `POST /progress`
+- **Description**: Track user progress through the book (optional feature)
+- **Headers**:
+  - `Authorization: Bearer {token}` (required if tracking is enabled)
+- **Request Body**:
+  ```json
+  {
+    "userId": "string",
+    "lessonId": "string",
+    "status": "started|completed",
+    "completionPercentage": "number"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "success": "boolean",
+    "message": "string"
+  }
+  ```
+
+## Error Responses
+All endpoints follow the same error response format:
+```json
+{
+  "error": {
+    "code": "string",
+    "message": "string",
+    "details": "object (optional)"
+  }
+}
+```
+
+## Rate Limiting
+- Public endpoints: 100 requests per hour per IP
+- Authenticated endpoints: 1000 requests per hour per user
