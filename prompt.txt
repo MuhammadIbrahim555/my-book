@@ -1,0 +1,25 @@
+19:30:08.414 Running build in Washington, D.C., USA (East) – iad1
+19:30:08.415 Build machine configuration: 2 cores, 8 GB
+19:30:08.544 Cloning github.com/MuhammadIbrahim555/my-book (Branch: main, Commit: 04c5002)
+19:30:08.544 Previous build caches not available.
+19:30:09.327 Cloning completed: 783.000ms
+19:30:09.752 Warning: Detected "engines": { "node": ">=20.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: https://vercel.link/node-version
+19:30:09.753 Running "vercel build"
+19:30:11.348 Vercel CLI 50.4.4
+19:30:11.873 Warning: Detected "engines": { "node": ">=20.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: https://vercel.link/node-version
+19:30:11.887 Installing dependencies...
+19:30:24.267 
+19:30:24.268 added 1266 packages in 12s
+19:30:24.269 
+19:30:24.269 406 packages are looking for funding
+19:30:24.269   run `npm fund` for details
+19:30:24.317 Running "npm run build"
+19:30:24.460 
+19:30:24.461 > 001-book-spec@0.0.0 build
+19:30:24.461 > docusaurus build
+19:30:24.461 
+19:30:25.558 [INFO] [en] Creating an optimized production build...
+19:30:26.373 [info] [webpackbar] Compiling Client
+19:30:26.397 [info] [webpackbar] Compiling Server
+19:30:48.011 [success] [webpackbar] Server: Compiled successfully in 21.61s
+19:30:58.208 [success] [webpackbar] Client: Compiled successfully in 31.84s
